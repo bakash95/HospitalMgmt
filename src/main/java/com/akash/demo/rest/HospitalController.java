@@ -76,4 +76,12 @@ public class HospitalController {
 		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("System Unavailable");
 	}
 
+	@RequestMapping(value = "/admin/removeMedicine", method = RequestMethod.GET)
+	private ResponseEntity<String> removeMedicine(String medicineName) {
+		if (hospitalOpsService.removeMedicineFromDB(medicineName)) {
+			return ResponseEntity.status(HttpStatus.OK).body("Medicine was Removed into the DB");
+		}
+		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("System Unavailable");
+	}
+
 }

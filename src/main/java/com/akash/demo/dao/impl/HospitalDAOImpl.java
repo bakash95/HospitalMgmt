@@ -119,6 +119,28 @@ public class HospitalDAOImpl {
 	}
 
 	public boolean checkRole(String username, String string) {
+		String sql = "select * from employee where username= ? and role=string";
+		try {
+			jdbcTemplate.queryForObject(sql, new Object[] { userName }, Employee.class);
+		} catch (EmptyResultDataAccessException e) {
+			return false;
+		}
+		return true;
+	}
+
+	public boolean removeMedicineFromDB(String medicineName) {
+		String sql = "delete from medicine where medicine name =?";
+		try {
+			jdbcTemplate.execute(sql, new PreparedStatementCallback<Boolean>() {
+				@Override
+				public Boolean doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
+					ps.setString(1, medicineName);
+					return ps.execute();
+				}
+			});
+		} catch (Exception e) {
+			return false;
+		}
 		return true;
 	}
 

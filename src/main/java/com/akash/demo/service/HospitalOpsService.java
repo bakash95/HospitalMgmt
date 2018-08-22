@@ -53,4 +53,8 @@ public class HospitalOpsService {
 	public boolean checkRole(String username, String string) {
 		return hospitalDAOImpl.checkRole(username, string);
 	}
+
+	public boolean removeMedicineFromDB(String medicineName) {
+		return hospitalDAOImpl.removeMedicineFromDB(medicineName);
+	}
 }
