@@ -1,30 +1,20 @@
 package com.akash.demo.vo;
 
 public class MedicineVO {
-	int medicineID;
 	String medicineName;
 	String disease;
 	String symptomsOfDisease;
-	boolean afterOrBeforeFood;
-	String timing; //change to enum
+	String afterOrBeforeFood;
+	String timing; // change to enum
 
-	public MedicineVO(int medicineID, String medicineName, String disease, String symptomsOfDisease,
-			boolean afterOrBeforeFood, String timing) {
+	public MedicineVO(String medicineName, String disease, String symptomsOfDisease, String afterOrBeforeFood,
+			String timing) {
 		super();
-		this.medicineID = medicineID;
 		this.medicineName = medicineName;
 		this.disease = disease;
 		this.symptomsOfDisease = symptomsOfDisease;
 		this.afterOrBeforeFood = afterOrBeforeFood;
 		this.timing = timing;
-	}
-
-	public int getMedicineID() {
-		return medicineID;
-	}
-
-	public void setMedicineID(int medicineID) {
-		this.medicineID = medicineID;
 	}
 
 	public String getMedicineName() {
@@ -51,11 +41,11 @@ public class MedicineVO {
 		this.symptomsOfDisease = symptomsOfDisease;
 	}
 
-	public boolean isAfterOrBeforeFood() {
+	public String isAfterOrBeforeFood() {
 		return afterOrBeforeFood;
 	}
 
-	public void setAfterOrBeforeFood(boolean afterOrBeforeFood) {
+	public void setAfterOrBeforeFood(String afterOrBeforeFood) {
 		this.afterOrBeforeFood = afterOrBeforeFood;
 	}
 

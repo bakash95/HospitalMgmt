@@ -144,4 +144,8 @@ public class HospitalDAOImpl {
 		return true;
 	}
 
+	public boolean updateMedicine(MedicineVO medicineVO) {
+		return false;
+	}
+
 }

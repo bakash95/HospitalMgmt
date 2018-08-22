@@ -68,9 +68,17 @@ public class HospitalController {
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(CommonConstants.JWT_AUTH_GEN_FAILURE);
 	}
 
-	@RequestMapping(value = "/admin/insertMedicine", method = RequestMethod.GET)
-	private ResponseEntity<String> insertMedicine(String medicineName) {
+	@RequestMapping(value = "/admin/insertMedicine/{medicinename}", method = RequestMethod.GET)
+	private ResponseEntity<String> insertMedicine(@PathVariable String medicineName) {
 		if (hospitalOpsService.insertMedicineToDB(medicineName)) {
+			return ResponseEntity.status(HttpStatus.OK).body("Medicine was inserted into the DB");
+		}
+		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("System Unavailable");
+	}
+
+	@RequestMapping(value = "/doctor/updateMedicine", method = RequestMethod.POST)
+	private ResponseEntity<String> updateMedicine(MedicineVO medicineVO) {
+		if (hospitalOpsService.updateMedicine(medicineVO)) {
 			return ResponseEntity.status(HttpStatus.OK).body("Medicine was inserted into the DB");
 		}
 		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("System Unavailable");

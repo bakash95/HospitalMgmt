@@ -1,0 +1,5 @@
+create database hospital;
+use hospital;
+create table employee(username varchar(50),password varchar(50),role varchar(20),primary key(username));
+create table medicine(name varchar(50),disease varchar(50),symptoms varchar(50),bfrafr varchar(10),timing varchar(20),primary key(name));
+commit;
