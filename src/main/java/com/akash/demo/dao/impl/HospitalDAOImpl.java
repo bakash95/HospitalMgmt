@@ -121,7 +121,7 @@ public class HospitalDAOImpl {
 	public boolean checkRole(String username, String string) {
 		String sql = "select * from employee where username= ? and role=string";
 		try {
-			jdbcTemplate.queryForObject(sql, new Object[] { userName }, Employee.class);
+			jdbcTemplate.queryForObject(sql, new Object[] { username }, Employee.class);
 		} catch (EmptyResultDataAccessException e) {
 			return false;
 		}
