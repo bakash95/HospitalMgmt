@@ -24,36 +24,56 @@ public class HospitalController {
 	@Autowired
 	private HospitalOpsService hospitalOpsService;
 
-	@RequestMapping(value = "/getAllMedicineInfo", produces = "application/json", method = RequestMethod.GET)
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public ResponseEntity<String> register(@RequestParam("username") String userName,
+			@RequestParam("password") String password, @RequestParam("role") String role) {
+		if (hospitalOpsService.register(userName, password, role)) {
+			return ResponseEntity.status(HttpStatus.OK).body("User registered successfully!");
+		}
+		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("System Unavailable");
+	}
+
+	@RequestMapping(value = "/info/getAllMedicineInfo", produces = "application/json", method = RequestMethod.GET)
 	private List<MedicineVO> getAllMedicineInfo() {
 		return hospitalOpsService.getAllMedicineInfo();
 	}
 
-	@RequestMapping(value = "/getInfoForMedicine/{medicineName}", produces = "application/json", method = RequestMethod.GET)
+	@RequestMapping(value = "/view/getInfoForMedicine/{medicineName}", produces = "application/json", method = RequestMethod.GET)
 	private MedicineVO getInfoOfMedicine(@PathVariable String medicineName) {
 		return hospitalOpsService.getMedicineInfoForName(medicineName);
 	}
 
-	@RequestMapping(value = "/getInfoForMedicine/{disease}", produces = "application/json", method = RequestMethod.GET)
+	@RequestMapping(value = "/view/getInfoForMedicine/{disease}", produces = "application/json", method = RequestMethod.GET)
 	private List<MedicineVO> getMedicineForDisease(@PathVariable String diseaseName) {
 		return hospitalOpsService.getMedicineForDisease(diseaseName);
 	}
 
-	@RequestMapping(value = "/getInfoForMedicine/{symptoms}", produces = "application/json", method = RequestMethod.GET)
+	@RequestMapping(value = "/view/getInfoForMedicine/{symptoms}", produces = "application/json", method = RequestMethod.GET)
 	private List<MedicineVO> getMedicineForSymptom(@PathVariable String symptom) {
 		return hospitalOpsService.getMedicineForSymptom(symptom);
 	}
 
-	@RequestMapping(value = "/getTokenForAuth", produces = "application/json", method = RequestMethod.GET)
+	@RequestMapping(value = "/getTokenForAuth", method = RequestMethod.GET)
 	private ResponseEntity<String> getAllMedicineInfo(HttpServletResponse httpServletResponse,
-			@RequestParam("userId") String userId, @RequestParam("password") String password) {
-		if (hospitalOpsService.validateUser(userId, password)) {
+			@RequestParam("username") String username, @RequestParam("password") String password) {
+		if (!hospitalOpsService.checkRole(username, "ADMIN")) {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(CommonConstants.JWT_AUTH_GEN_FAILURE);
+		}
+		if (hospitalOpsService.validateUser(username, password)) {
 			httpServletResponse.addHeader(CommonConstants.AUTHROIZATION,
-					CommonConstants.BEARER + JWTAuth.createJWT(String.valueOf(userId), "JWT Controller",
-							"Issued for Auth with expiry of 8hrs", CommonConstants.EXPIRY_TIME_AUTH));
+					CommonConstants.BEARER + "=" + JWTAuth.createJWT(String.valueOf(username), CommonConstants.ISSUER,
+							CommonConstants.SUBJECT, CommonConstants.EXPIRY_TIME_AUTH));
 			return ResponseEntity.status(HttpStatus.OK).body(CommonConstants.JWT_AUTH_GEN_SUCCESS);
 		}
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(CommonConstants.JWT_AUTH_GEN_FAILURE);
+	}
+
+	@RequestMapping(value = "/admin/insertMedicine", method = RequestMethod.GET)
+	private ResponseEntity<String> insertMedicine(String medicineName) {
+		if (hospitalOpsService.insertMedicineToDB(medicineName)) {
+			return ResponseEntity.status(HttpStatus.OK).body("Medicine was inserted into the DB");
+		}
+		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("System Unavailable");
 	}
 
 }

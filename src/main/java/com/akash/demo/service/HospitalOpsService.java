@@ -3,6 +3,7 @@ package com.akash.demo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.akash.demo.dao.impl.HospitalDAOImpl;
@@ -32,5 +33,25 @@ public class HospitalOpsService {
 
 	public List<MedicineVO> getMedicineForSymptom(String symptom) {
 		return hospitalDAOImpl.getMedicineForSymptom(symptom);
+	}
+
+	public boolean insertMedicineToDB(String medicineName) {
+		return hospitalDAOImpl.insertMedicineToDB(medicineName);
+	}
+
+	public boolean register(String userName, String password, String role) {
+		String ROLE_USER = "";
+		if (role.toLowerCase().equals("admin")) {
+			ROLE_USER = "ADMIN";
+		} else if (role.toLowerCase().equals("doctor")) {
+			ROLE_USER = "DOCTOR";
+		} else if (role.toLowerCase().equals("staff")) {
+			ROLE_USER = "STAFF";
+		}
+		return hospitalDAOImpl.register(userName, password, ROLE_USER);
+	}
+
+	public boolean checkRole(String username, String string) {
+		return hospitalDAOImpl.checkRole(username, string);
 	}
 }
