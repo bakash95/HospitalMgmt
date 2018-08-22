@@ -57,4 +57,8 @@ public class HospitalOpsService {
 	public boolean removeMedicineFromDB(String medicineName) {
 		return hospitalDAOImpl.removeMedicineFromDB(medicineName);
 	}
+
+	public boolean updateMedicine(MedicineVO medicineVO) {
+		return hospitalDAOImpl.updateMedicine(medicineVO);
+	}
 }
