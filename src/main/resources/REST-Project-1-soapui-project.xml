@@ -1,12 +1,762 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="2474f325-7a78-48cd-953a-ff89e4c5208f" activeEnvironment="Default" name="REST Project 1" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" resourceRoot="" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="4fb06d07-e40d-49eb-ad77-d768138b5231" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:8080" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>http://localhost:8080</con:endpoint></con:endpoints><con:resource name="GetTokenForAuth" path="/getTokenForAuth?username=akash&amp;password=password" id="9f91f2f4-7052-41ac-a1ab-5d426c4d1678"><con:settings/><con:parameters/><con:method name="GetTokenForAuth 1" id="ee129bb3-d3a0-4c7d-aaf1-5c437349c663" method="GET"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>text/plain;charset=UTF-8</con:mediaType><con:status>403</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>500 403</con:status><con:params/><con:element xmlns:get="http://localhost/getTokenForAuth/">get:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>text/plain;charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>text/html;charset=utf-8</con:mediaType><con:status>500</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="52c84f4e-099d-4fcb-988d-a4a91844290d" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/getTokenForAuth/</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="insertMedicine" path="/insertMedicine/?medicinename=parate&amp;username=akash" id="907b2bc8-e82b-491f-803d-f472f490c6f1"><con:settings/><con:parameters/><con:method name="Method 1" id="a7f3c984-5960-4eae-b1c0-fbcb6faadedf" method="GET"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>500 404</con:status><con:params/></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>text/plain;charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>403</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>403</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>403</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>403</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>text/plain;charset=UTF-8</con:mediaType><con:status>503</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="23d92660-9d28-4b0b-b4be-d78cd5dcc4fa" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Authorization" value="Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJha2FzaCIsImlhdCI6MTUzNTA0MDc4OCwic3ViIjoiSXNzdWVkIGZvciBBdXRoIHdpdGggZXhwaXJ5IG9mIDhocnMiLCJpc3MiOiJKV1QgQ29udHJvbGxlciIsImV4cCI6MTUzNTA3MDc4OH0.Yha6Tn_blcEnedGXK7JvKdyPuhPb4snqKXdrSaImK6s" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/admin/insertMedicine</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder/></con:request></con:method></con:resource><con:resource name="register" path="/register/?username=staff1&amp;password=password&amp;role=STAFF" id="2db92f01-98ec-414d-b4a7-e289e18488a9"><con:settings/><con:parameters/><con:method name="Method 1" id="4b7572a8-ea86-4248-8527-ecf2445e6290" method="GET"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:reg="http://localhost/register/">reg:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>text/plain;charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="6e5dfde6-c72e-4d81-b5bc-111658053865" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/register/</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="getAllMedicineInfo" path="/getAllMedicineInfo" id="4702da3d-0669-4c7b-8e54-966cf68207d5"><con:settings/><con:parameters/><con:method name="Method 1" id="aa3dc899-0121-4ff5-a73e-5563be689c3d" method="GET"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>500</con:status><con:params/><con:element xmlns:get="http://localhost/getAllMedicineInfo">get:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element>Response</con:element></con:representation><con:request name="Request 1" id="277e47ef-70dc-411f-b187-aa0f9244418f" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/getAllMedicineInfo</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="getInfoForMedicineForSymptom" path="/getInfoForMedicineForSymptom/?symptom=pain" id="cc260c5f-136c-4ada-a592-e03c5d7ef662"><con:settings/><con:parameters/><con:method name="Method 1" id="195bf2a0-ecd5-4688-b46a-fc01ea4b4fec" method="GET"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>404</con:status><con:params/><con:element xmlns:loc="http://localhost/">loc:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element>Response</con:element></con:representation><con:request name="Request 1" id="d78f1e69-1ec9-4a5c-82fb-bd75e55a9fbb" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="getInfoForMedicine" path="/getInfoForMedicine/?medicinename=paracetamol" id="23032947-3e21-4f99-8856-cabef79f1050"><con:settings/><con:parameters/><con:method name="Method 1" id="6b57c13f-8417-444e-ba5c-4f39e06fd48c" method="GET"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>500</con:status><con:params/><con:element xmlns:get="http://localhost/getInfoForMedicine/">get:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:get="http://localhost/getInfoForMedicine/">get:Response</con:element></con:representation><con:request name="Request 1" id="884b8bff-8cdf-4afa-9143-b317143c9e70" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/getInfoForMedicine/</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="updateMedicine" path="/updateMedicine" id="d4586913-4944-4d41-9f2c-4e79fd6fec9a"><con:settings/><con:parameters/><con:method name="Method 1" id="b8b10bcc-12f5-4411-94f7-8fb295c76da1" method="POST"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>text/plain;charset=UTF-8</con:mediaType><con:status>503</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>text/plain;charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>400 500</con:status><con:params/><con:element xmlns:upd="http://localhost/updateMedicine">upd:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>401</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="4ae1ade9-beea-428f-a73d-86037d87cb9f" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
-  &lt;con:entry key="" value=""/>
-  &lt;con:entry key="Authorization" value="Basic c3RhZmYxOnBhc3N3b3Jk"/>
-&lt;/xml-fragment></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
-	"medicineName":"pare",
-	"disease":"fever",
-	"symptomsOfDisease":"pain",
-	"afterOrBeforeFood":"after",
-	"timing":"morn"
-}
-</con:request><con:originalUri>http://localhost/updateMedicine</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="removeMedicine" path="/removeMedicine/?medicinename=paracetamol" id="624a4f4a-bbb1-4730-b9f1-b315d41fdf5b"><con:settings/><con:parameters/><con:method name="Method 1" id="62a315d2-9355-4454-b3b7-d24d1c1bb932" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>text/plain;charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="0543d5e2-275d-4915-bda8-739b93523cf7" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/removeMedicine/</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="getInfoForMedicineForDisease" path="/getInfoForMedicineForDisease/?disease=cold" id="87cf3ce8-6ce3-4bb9-979e-d92b88cf77b8"><con:settings/><con:parameters/><con:method name="Method 1" id="1636d043-1372-4221-92d7-7caa1c4bc8fc" method="GET"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:get="http://localhost/getInfoForMedicineForDisease/">get:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element>Response</con:element></con:representation><con:request name="Request 1" id="26d2e57a-a4e3-4084-9667-53b868d4de9b" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/getInfoForMedicineForDisease/</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+<con:soapui-project
+	id="2474f325-7a78-48cd-953a-ff89e4c5208f" activeEnvironment="Default"
+	name="REST Project 1" soapui-version="5.4.0" abortOnError="false"
+	runType="SEQUENTIAL" resourceRoot=""
+	xmlns:con="http://eviware.com/soapui/config">
+	<con:settings />
+	<con:interface xsi:type="con:RestService"
+		id="4fb06d07-e40d-49eb-ad77-d768138b5231"
+		wadlVersion="http://wadl.dev.java.net/2009/02"
+		name="http://localhost:8080" type="rest"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<con:settings />
+		<con:definitionCache type="TEXT" rootPart="" />
+		<con:endpoints>
+			<con:endpoint>http://localhost:8080</con:endpoint>
+		</con:endpoints>
+		<con:resource name="GetTokenForAuth"
+			path="/getTokenForAuth?username=admin&amp;password=password"
+			id="9f91f2f4-7052-41ac-a1ab-5d426c4d1678">
+			<con:settings />
+			<con:parameters />
+			<con:method name="GetTokenForAuth 1"
+				id="ee129bb3-d3a0-4c7d-aaf1-5c437349c663" method="GET">
+				<con:settings />
+				<con:parameters />
+				<con:representation type="FAULT">
+					<con:mediaType>text/plain;charset=UTF-8</con:mediaType>
+					<con:status>403</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType>application/json;charset=UTF-8</con:mediaType>
+					<con:status>500 403</con:status>
+					<con:params />
+					<con:element
+						xmlns:get="http://localhost/getTokenForAuth/">get:Fault</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType>text/plain;charset=UTF-8</con:mediaType>
+					<con:status>200</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>0</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>0</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType>text/html;charset=utf-8</con:mediaType>
+					<con:status>500</con:status>
+					<con:params />
+					<con:element>html</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>0</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>0</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>200</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType>application/json;charset=UTF-8</con:mediaType>
+					<con:status>200</con:status>
+					<con:params />
+				</con:representation>
+				<con:request name="Request 1"
+					id="52c84f4e-099d-4fcb-988d-a4a91844290d"
+					mediaType="application/json">
+					<con:settings>
+						<con:setting
+							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+					</con:settings>
+					<con:endpoint>http://localhost:8080</con:endpoint>
+					<con:request />
+					<con:originalUri>http://localhost/getTokenForAuth/
+					</con:originalUri>
+					<con:credentials>
+						<con:authType>No Authorization</con:authType>
+					</con:credentials>
+					<con:jmsConfig JMSDeliveryMode="PERSISTENT" />
+					<con:jmsPropertyConfig />
+					<con:parameters />
+				</con:request>
+			</con:method>
+		</con:resource>
+		<con:resource name="insertMedicine"
+			path="/insertMedicine/?medicinename=paracetamol&amp;username=admin"
+			id="907b2bc8-e82b-491f-803d-f472f490c6f1">
+			<con:settings />
+			<con:parameters />
+			<con:method name="Method 1"
+				id="a7f3c984-5960-4eae-b1c0-fbcb6faadedf" method="GET">
+				<con:settings />
+				<con:parameters />
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType>application/json;charset=UTF-8</con:mediaType>
+					<con:status>500 404</con:status>
+					<con:params />
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>0</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>0</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType>text/plain;charset=UTF-8</con:mediaType>
+					<con:status>200</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>403</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>0</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>403</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>0</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>403</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>0</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>0</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>403</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType>text/plain;charset=UTF-8</con:mediaType>
+					<con:status>503</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>0</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>403</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>0</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:request name="Request 1"
+					id="23d92660-9d28-4b0b-b4be-d78cd5dcc4fa"
+					mediaType="application/json">
+					<con:settings>
+						<con:setting
+							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Authorization" value="Bearer
+							eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhZG1pbiIsImlhdCI6MTUzNTA1MDA0OSwic3ViIjoiSXNzdWVkIGZvciBBdXRoIHdpdGggZXhwaXJ5IG9mIDhocnMiLCJpc3MiOiJKV1QgQ29udHJvbGxlciIsImV4cCI6MTUzNTA4MDA0OX0.2z_sRAqzZ10ST1mOGKRaoGiPr_RFWZqHruPHEjF0cgo"
+							xmlns="http://eviware.com/soapui/config"/>
+						</con:setting>
+					</con:settings>
+					<con:endpoint>http://localhost:8080</con:endpoint>
+					<con:request />
+					<con:originalUri>http://localhost/admin/insertMedicine
+					</con:originalUri>
+					<con:credentials>
+						<con:authType>No Authorization</con:authType>
+					</con:credentials>
+					<con:jmsConfig JMSDeliveryMode="PERSISTENT" />
+					<con:jmsPropertyConfig />
+					<con:parameters />
+					<con:parameterOrder />
+				</con:request>
+				<con:request name="invalidRequest"
+					id="23d92660-9d28-4b0b-b4be-d78cd5dcc4fa"
+					mediaType="application/json">
+					<con:settings>
+						<con:setting
+							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Authorization" value="Bearer
+							eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJha2FzaCIsImlhdCI6MTUzNTA0MDc4OCwic3ViIjoiSXNzdWVkIGZvciBBdXRoIHdpdGggZXhwaXJ5IG9mIDhocnMiLCJpc3MiOiJKV1QgQ29udHJvbGxlciIsImV4cCI6MTUzNTA3MDc4OH0.Yha6Tn_blcEnedGXK7JvKdyPuhPb4snqKXdrSaImK6s"
+							xmlns="http://eviware.com/soapui/config"/>
+						</con:setting>
+					</con:settings>
+					<con:endpoint>http://localhost:8080</con:endpoint>
+					<con:request />
+					<con:originalUri>http://localhost/admin/insertMedicine
+					</con:originalUri>
+					<con:credentials>
+						<con:authType>No Authorization</con:authType>
+					</con:credentials>
+					<con:jmsConfig JMSDeliveryMode="PERSISTENT" />
+					<con:jmsPropertyConfig />
+					<con:parameters />
+					<con:parameterOrder />
+				</con:request>
+			</con:method>
+		</con:resource>
+		<con:resource name="register"
+			path="/register/?username=doctor&amp;password=password&amp;role=doctor"
+			id="2db92f01-98ec-414d-b4a7-e289e18488a9">
+			<con:settings />
+			<con:parameters />
+			<con:method name="Method 1"
+				id="4b7572a8-ea86-4248-8527-ecf2445e6290" method="GET">
+				<con:settings />
+				<con:parameters />
+				<con:representation type="FAULT">
+					<con:mediaType>application/json;charset=UTF-8</con:mediaType>
+					<con:status>400</con:status>
+					<con:params />
+					<con:element xmlns:reg="http://localhost/register/">reg:Fault</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType>text/plain;charset=UTF-8</con:mediaType>
+					<con:status>200</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:request name="Request 1"
+					id="6e5dfde6-c72e-4d81-b5bc-111658053865"
+					mediaType="application/json">
+					<con:settings>
+						<con:setting
+							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+					</con:settings>
+					<con:endpoint>http://localhost:8080</con:endpoint>
+					<con:request />
+					<con:originalUri>http://localhost/register/</con:originalUri>
+					<con:credentials>
+						<con:authType>No Authorization</con:authType>
+					</con:credentials>
+					<con:jmsConfig JMSDeliveryMode="PERSISTENT" />
+					<con:jmsPropertyConfig />
+					<con:parameters />
+				</con:request>
+			</con:method>
+		</con:resource>
+		<con:resource name="getAllMedicineInfo"
+			path="/getAllMedicineInfo" id="4702da3d-0669-4c7b-8e54-966cf68207d5">
+			<con:settings />
+			<con:parameters />
+			<con:method name="Method 1"
+				id="aa3dc899-0121-4ff5-a73e-5563be689c3d" method="GET">
+				<con:settings />
+				<con:parameters />
+				<con:representation type="FAULT">
+					<con:mediaType>application/json;charset=UTF-8</con:mediaType>
+					<con:status>500</con:status>
+					<con:params />
+					<con:element
+						xmlns:get="http://localhost/getAllMedicineInfo">get:Fault</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType>application/json;charset=UTF-8</con:mediaType>
+					<con:status>200</con:status>
+					<con:params />
+					<con:element>Response</con:element>
+				</con:representation>
+				<con:request name="Request 1"
+					id="277e47ef-70dc-411f-b187-aa0f9244418f"
+					mediaType="application/json">
+					<con:settings>
+						<con:setting
+							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+					</con:settings>
+					<con:endpoint>http://localhost:8080</con:endpoint>
+					<con:request />
+					<con:originalUri>http://localhost/getAllMedicineInfo
+					</con:originalUri>
+					<con:credentials>
+						<con:authType>No Authorization</con:authType>
+					</con:credentials>
+					<con:jmsConfig JMSDeliveryMode="PERSISTENT" />
+					<con:jmsPropertyConfig />
+					<con:parameters />
+				</con:request>
+			</con:method>
+		</con:resource>
+		<con:resource name="getInfoForMedicineForSymptom"
+			path="/getInfoForMedicineForSymptom/?symptom=pain"
+			id="cc260c5f-136c-4ada-a592-e03c5d7ef662">
+			<con:settings />
+			<con:parameters />
+			<con:method name="Method 1"
+				id="195bf2a0-ecd5-4688-b46a-fc01ea4b4fec" method="GET">
+				<con:settings />
+				<con:parameters />
+				<con:representation type="FAULT">
+					<con:mediaType>application/json;charset=UTF-8</con:mediaType>
+					<con:status>404</con:status>
+					<con:params />
+					<con:element xmlns:loc="http://localhost/">loc:Fault</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>200</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>200</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>200</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType>application/json;charset=UTF-8</con:mediaType>
+					<con:status>200</con:status>
+					<con:params />
+					<con:element>Response</con:element>
+				</con:representation>
+				<con:request name="Request 1"
+					id="d78f1e69-1ec9-4a5c-82fb-bd75e55a9fbb"
+					mediaType="application/json">
+					<con:settings>
+						<con:setting
+							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+					</con:settings>
+					<con:endpoint>http://localhost:8080</con:endpoint>
+					<con:request />
+					<con:originalUri>http://localhost/</con:originalUri>
+					<con:credentials>
+						<con:authType>No Authorization</con:authType>
+					</con:credentials>
+					<con:jmsConfig JMSDeliveryMode="PERSISTENT" />
+					<con:jmsPropertyConfig />
+					<con:parameters />
+				</con:request>
+			</con:method>
+		</con:resource>
+		<con:resource name="getInfoForMedicine"
+			path="/getInfoForMedicine/?medicinename=paracetamol"
+			id="23032947-3e21-4f99-8856-cabef79f1050">
+			<con:settings />
+			<con:parameters />
+			<con:method name="Method 1"
+				id="6b57c13f-8417-444e-ba5c-4f39e06fd48c" method="GET">
+				<con:settings />
+				<con:parameters />
+				<con:representation type="FAULT">
+					<con:mediaType>application/json;charset=UTF-8</con:mediaType>
+					<con:status>500</con:status>
+					<con:params />
+					<con:element
+						xmlns:get="http://localhost/getInfoForMedicine/">get:Fault</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType>application/json;charset=UTF-8</con:mediaType>
+					<con:status>200</con:status>
+					<con:params />
+					<con:element
+						xmlns:get="http://localhost/getInfoForMedicine/">get:Response</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>200</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:request name="Request 1"
+					id="884b8bff-8cdf-4afa-9143-b317143c9e70"
+					mediaType="application/json">
+					<con:settings>
+						<con:setting
+							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+					</con:settings>
+					<con:endpoint>http://localhost:8080</con:endpoint>
+					<con:request />
+					<con:originalUri>http://localhost/getInfoForMedicine/
+					</con:originalUri>
+					<con:credentials>
+						<con:authType>No Authorization</con:authType>
+					</con:credentials>
+					<con:jmsConfig JMSDeliveryMode="PERSISTENT" />
+					<con:jmsPropertyConfig />
+					<con:parameters />
+				</con:request>
+			</con:method>
+		</con:resource>
+		<con:resource name="updateMedicine"
+			path="/updateMedicine" id="d4586913-4944-4d41-9f2c-4e79fd6fec9a">
+			<con:settings />
+			<con:parameters />
+			<con:method name="Method 1"
+				id="b8b10bcc-12f5-4411-94f7-8fb295c76da1" method="POST">
+				<con:settings />
+				<con:parameters />
+				<con:representation type="FAULT">
+					<con:mediaType>text/plain;charset=UTF-8</con:mediaType>
+					<con:status>503 401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="REQUEST">
+					<con:mediaType>application/json</con:mediaType>
+					<con:params />
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType>text/plain;charset=UTF-8</con:mediaType>
+					<con:status>200</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>0</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>0</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType>application/json;charset=UTF-8</con:mediaType>
+					<con:status>400 500</con:status>
+					<con:params />
+					<con:element
+						xmlns:upd="http://localhost/updateMedicine">upd:Fault</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>0</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>200</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>200</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>0</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:request name="Request 1"
+					id="4ae1ade9-beea-428f-a73d-86037d87cb9f"
+					mediaType="application/json" postQueryString="false">
+					<con:settings>
+						<con:setting
+							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+							&lt;con:entry key="" value=""/>
+							&lt;con:entry key="Authorization"
+							value="Basic ZG9jdG9yOnBhc3N3b3Jk"/>
+							&lt;/xml-fragment>
+						</con:setting>
+					</con:settings>
+					<con:endpoint>http://localhost:8080</con:endpoint>
+					<con:request>{
+						"medicineName":"paracetamol",
+						"disease":"fever",
+						"symptomsOfDisease":"pain",
+						"afterOrBeforeFood":"after",
+						"timing":"morn"
+						}
+					</con:request>
+					<con:originalUri>http://localhost/updateMedicine</con:originalUri>
+					<con:credentials>
+						<con:authType>No Authorization</con:authType>
+					</con:credentials>
+					<con:jmsConfig JMSDeliveryMode="PERSISTENT" />
+					<con:jmsPropertyConfig />
+					<con:parameters />
+				</con:request>
+			</con:method>
+		</con:resource>
+		<con:resource name="removeMedicine"
+			path="/removeMedicine/?medicinename=paracetamol"
+			id="624a4f4a-bbb1-4730-b9f1-b315d41fdf5b">
+			<con:settings />
+			<con:parameters />
+			<con:method name="Method 1"
+				id="62a315d2-9355-4454-b3b7-d24d1c1bb932" method="GET">
+				<con:settings />
+				<con:parameters />
+				<con:representation type="RESPONSE">
+					<con:mediaType>text/plain;charset=UTF-8</con:mediaType>
+					<con:status>200</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:request name="Request 1"
+					id="0543d5e2-275d-4915-bda8-739b93523cf7"
+					mediaType="application/json">
+					<con:settings>
+						<con:setting
+							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+					</con:settings>
+					<con:endpoint>http://localhost:8080</con:endpoint>
+					<con:request />
+					<con:originalUri>http://localhost/removeMedicine/</con:originalUri>
+					<con:credentials>
+						<con:authType>No Authorization</con:authType>
+					</con:credentials>
+					<con:jmsConfig JMSDeliveryMode="PERSISTENT" />
+					<con:jmsPropertyConfig />
+					<con:parameters />
+				</con:request>
+			</con:method>
+		</con:resource>
+		<con:resource name="getInfoForMedicineForDisease"
+			path="/getInfoForMedicineForDisease/?disease=fever"
+			id="87cf3ce8-6ce3-4bb9-979e-d92b88cf77b8">
+			<con:settings />
+			<con:parameters />
+			<con:method name="Method 1"
+				id="1636d043-1372-4221-92d7-7caa1c4bc8fc" method="GET">
+				<con:settings />
+				<con:parameters />
+				<con:representation type="FAULT">
+					<con:mediaType>application/json;charset=UTF-8</con:mediaType>
+					<con:status>400</con:status>
+					<con:params />
+					<con:element
+						xmlns:get="http://localhost/getInfoForMedicineForDisease/">get:Fault</con:element>
+				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType>application/json;charset=UTF-8</con:mediaType>
+					<con:status>200</con:status>
+					<con:params />
+					<con:element>Response</con:element>
+				</con:representation>
+				<con:request name="Request 1"
+					id="26d2e57a-a4e3-4084-9667-53b868d4de9b"
+					mediaType="application/json">
+					<con:settings>
+						<con:setting
+							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+					</con:settings>
+					<con:endpoint>http://localhost:8080</con:endpoint>
+					<con:request />
+					<con:originalUri>http://localhost/getInfoForMedicineForDisease/
+					</con:originalUri>
+					<con:credentials>
+						<con:authType>No Authorization</con:authType>
+					</con:credentials>
+					<con:jmsConfig JMSDeliveryMode="PERSISTENT" />
+					<con:jmsPropertyConfig />
+					<con:parameters />
+				</con:request>
+			</con:method>
+		</con:resource>
+	</con:interface>
+	<con:properties />
+	<con:wssContainer />
+	<con:oAuth2ProfileContainer />
+	<con:oAuth1ProfileContainer />
+</con:soapui-project>
