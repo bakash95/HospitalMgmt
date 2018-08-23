@@ -5,7 +5,7 @@ public class MedicineVO {
 	String disease;
 	String symptomsOfDisease;
 	String afterOrBeforeFood;
-	String timing; // change to enum
+	String timing;
 
 	public MedicineVO() {
 	}

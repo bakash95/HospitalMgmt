@@ -17,11 +17,11 @@ import com.akash.demo.vo.JWTPayloadVO;
 
 public class RequestInterceptor extends HandlerInterceptorAdapter {
 
-	@Autowired
-	private HospitalOpsService hospitalOpsService;
-
 	@Resource(name = "urlAuthProps")
 	private Map<String, String> urlAuthProps;
+
+	@Autowired
+	private HospitalOpsService hospitalOpsService;
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -74,7 +74,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 						return false;
 					}
 					System.out.println(splitUserName[0] + " " + splitUserName[1]);
-					if (!hospitalOpsService.checkRole(splitUserName[0], "doctor")) {
+					if (!hospitalOpsService.checkRole(splitUserName[0], "DOCTOR")) {
 						response.setStatus(401);
 						return false;
 					}

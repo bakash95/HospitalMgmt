@@ -54,7 +54,7 @@ public class HospitalController {
 	}
 
 	@RequestMapping(value = "/getTokenForAuth", produces = "application/json", method = RequestMethod.GET)
-	private ResponseEntity<String> getAllMedicineInfo(HttpServletResponse httpServletResponse,
+	private ResponseEntity<String> getTokenForAuth(HttpServletResponse httpServletResponse,
 			@RequestParam("username") String username, @RequestParam("password") String password) {
 		if (!hospitalOpsService.checkRole(username, "ADMIN")) {
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(CommonConstants.JWT_AUTH_GEN_FAILURE);

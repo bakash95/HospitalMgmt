@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
+import com.akash.demo.constants.CommonConstants;
 import com.akash.demo.dao.impl.HospitalDAOImpl;
 import com.akash.demo.vo.MedicineVO;
 
@@ -51,11 +52,11 @@ public class HospitalOpsService {
 	public boolean register(String userName, String password, String role) {
 		String ROLE_USER = "";
 		if (role.toLowerCase().equals("admin")) {
-			ROLE_USER = "ADMIN";
+			ROLE_USER = CommonConstants.ADMIN;
 		} else if (role.toLowerCase().equals("doctor")) {
-			ROLE_USER = "DOCTOR";
+			ROLE_USER = CommonConstants.DOCTOR;
 		} else if (role.toLowerCase().equals("staff")) {
-			ROLE_USER = "STAFF";
+			ROLE_USER = CommonConstants.STAFF;
 		}
 		return hospitalDAOImpl.register(userName, password, ROLE_USER);
 	}

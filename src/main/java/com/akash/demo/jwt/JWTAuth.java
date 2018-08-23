@@ -1,18 +1,18 @@
 package com.akash.demo.jwt;
 
-import java.util.Calendar;
+import java.security.Key;
 import java.util.Date;
+
 import javax.crypto.spec.SecretKeySpec;
-import javax.management.RuntimeErrorException;
 import javax.xml.bind.DatatypeConverter;
 
 import com.akash.demo.constants.CommonConstants;
 import com.akash.demo.vo.JWTPayloadVO;
 
-import java.security.Key;
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 
 public class JWTAuth {
 
@@ -45,12 +45,6 @@ public class JWTAuth {
 			throw new Exception("Sorry the token seems to be invalid!!");
 		}
 		return new JWTPayloadVO(claims.getId(), claims.getSubject(), claims.getIssuer(), claims.getExpiration());
-	}
-
-	public static void main(String[] args) throws Exception {
-
-		String s = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJha2FzaCIsImlhdCI6MTUzNTA0MDc4OCwic3ViIjoiSXNzdWVkIGZvciBBdXRoIHdpdGggZXhwaXJ5IG9mIDhocnMiLCJpc3MiOiJKV1QgQ29udHJvbGxlciIsImV4cCI6MTUzNTA3MDc4OH0.Yha6Tn_blcEnedGXK7JvKdyPuhPb4snqKXdrSaImK6s";
-		System.out.println(JWTAuth.getJWTPayload(s));
 	}
 
 	public static boolean validateJWT(JWTPayloadVO jwtPayloadVO, String username) {
