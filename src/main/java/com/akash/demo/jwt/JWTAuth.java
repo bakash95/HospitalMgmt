@@ -21,18 +21,21 @@ public class JWTAuth {
 	public static String createJWT(String id, String issuer, String subject, long lifeTimeOfToken) {
 		SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
-		long nowMillis = System.currentTimeMillis();
-		Date now = new Date(nowMillis);
+		long timeInMills = System.currentTimeMillis();
+		Date now = new Date(timeInMills);
+
 		byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(key);
+
 		Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
 		JwtBuilder builder = Jwts.builder().setId(id).setIssuedAt(now).setSubject(subject).setIssuer(issuer)
 				.signWith(signatureAlgorithm, signingKey);
 
 		if (lifeTimeOfToken >= 0) {
-			long expMillis = nowMillis + lifeTimeOfToken;
+			long expMillis = timeInMills + lifeTimeOfToken;
 			Date exp = new Date(expMillis);
 			builder.setExpiration(exp);
 		}
+
 		return builder.compact();
 	}
 
@@ -41,6 +44,7 @@ public class JWTAuth {
 		try {
 			claims = Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(key)).parseClaimsJws(jwt)
 					.getBody();
+
 		} catch (Exception e) {
 			throw new Exception("Sorry the token seems to be invalid!!");
 		}
