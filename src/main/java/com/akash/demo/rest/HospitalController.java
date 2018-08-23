@@ -62,10 +62,9 @@ public class HospitalController {
 		if (hospitalOpsService.validateUser(username, password)) {
 			String authToken = JWTAuth.createJWT(String.valueOf(username), CommonConstants.ISSUER,
 					CommonConstants.SUBJECT, CommonConstants.EXPIRY_TIME_AUTH);
-			System.out.println(authToken.trim());
 			httpServletResponse.addHeader(CommonConstants.AUTHROIZATION,
 					CommonConstants.BEARER + "=" + authToken.trim());
-			return ResponseEntity.status(HttpStatus.OK).body(authToken + " " + CommonConstants.JWT_AUTH_GEN_SUCCESS);
+			return ResponseEntity.status(HttpStatus.OK).body(authToken);
 		}
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(CommonConstants.JWT_AUTH_GEN_FAILURE);
 	}
