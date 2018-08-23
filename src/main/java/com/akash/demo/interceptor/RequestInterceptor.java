@@ -31,7 +31,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 		if (url == null || mapEntry == null) {
 			return false;
 		}
-		if (mapEntry.equals("ADMIN")) {
+		if (mapEntry.equals(CommonConstants.ADMIN)) {
 			String auth = request.getHeader(CommonConstants.AUTHROIZATION);
 			if (auth == null || auth.isEmpty() || !auth.contains(CommonConstants.BEARER)) {
 				response.setStatus(401);
@@ -50,7 +50,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 				response.setStatus(403);
 				return false;
 			}
-		} else if (mapEntry.equals("DOCTOR")) {
+		} else if (mapEntry.equals(CommonConstants.DOCTOR)) {
 			String auth = request.getHeader(CommonConstants.AUTHROIZATION);
 			if (auth == null || auth.isEmpty() || auth.contains(CommonConstants.BEARER)) {
 				response.setStatus(401);
