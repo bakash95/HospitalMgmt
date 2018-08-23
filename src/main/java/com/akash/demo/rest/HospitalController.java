@@ -73,9 +73,10 @@ public class HospitalController {
 	@RequestMapping(value = "/insertMedicine", method = RequestMethod.GET)
 	private ResponseEntity<String> insertMedicine(@RequestParam("medicinename") String medicineName) {
 		if (hospitalOpsService.insertMedicineToDB(medicineName)) {
-			return ResponseEntity.status(HttpStatus.OK).body("Medicine was inserted into the DB");
+			return ResponseEntity.status(HttpStatus.OK).body(CommonConstants.MEDICINE_INSERTED);
 		}
-		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("System Unavailable");
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+				.body("Trying to insert a medicine which is already there?");
 	}
 
 	@RequestMapping(value = "/updateMedicine", method = RequestMethod.POST)
@@ -83,7 +84,7 @@ public class HospitalController {
 		if (hospitalOpsService.updateMedicine(medicineVO)) {
 			return ResponseEntity.status(HttpStatus.OK).body("Medicine was inserted into the DB");
 		}
-		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
 				.body("You are tring to update a medicine which is not present!");
 	}
 
@@ -92,7 +93,8 @@ public class HospitalController {
 		if (hospitalOpsService.removeMedicineFromDB(medicineName)) {
 			return ResponseEntity.status(HttpStatus.OK).body("Medicine was Removed into the DB");
 		}
-		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("System Unavailable");
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+				.body("Trying to remove a medicine which is already there?");
 	}
 
 }

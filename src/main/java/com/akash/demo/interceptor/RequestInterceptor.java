@@ -43,7 +43,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 			}
 			try {
 				JWTPayloadVO jwtPayloadVO = JWTAuth.getJWTPayload(splittedForBearer[1]);
-				if (!JWTAuth.validateJWT(jwtPayloadVO, request.getParameter("username"))) {
+				if (!JWTAuth.validateJWT(jwtPayloadVO, request.getParameter(CommonConstants.USERNAME))) {
 					response.setStatus(403);
 				}
 			} catch (Exception e) {
@@ -57,13 +57,14 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 				return false;
 			}
 			String splitted[] = auth.split(" ");
-			if (splitted[0].isEmpty() || !splitted[0].toLowerCase().equals("basic") || !(splitted.length == 2)) {
+			if (splitted[0].isEmpty() || !splitted[0].toLowerCase().equals(CommonConstants.BASIC)
+					|| !(splitted.length == 2)) {
 				response.setStatus(401);
 				return false;
 			}
 			if (auth != null && !auth.isEmpty()) {
 				System.out.println("Auth header is present allowing request");
-				if (auth.toLowerCase().contains("basic")) {
+				if (auth.toLowerCase().contains(CommonConstants.BASIC)) {
 					System.out.println("basic is present");
 					String tokens[] = auth.split(" ");
 					byte[] decodedToken = Base64.getDecoder().decode(tokens[1]);
@@ -73,8 +74,8 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 						response.setStatus(401);
 						return false;
 					}
-					System.out.println(splitUserName[0] + " " + splitUserName[1]);
-					if (!hospitalOpsService.checkRole(splitUserName[0], "DOCTOR")) {
+					System.out.println("user name is " + splitUserName[0]);
+					if (!hospitalOpsService.checkRole(splitUserName[0], CommonConstants.DOCTOR)) {
 						response.setStatus(401);
 						return false;
 					}

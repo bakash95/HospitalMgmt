@@ -11,4 +11,7 @@ public class CommonConstants {
 	public static final String ADMIN = "ADMIN";
 	public static final String DOCTOR = "DOCTOR";
 	public static final String STAFF = "STAFF";
+	public static final String USERNAME = "username";
+	public static final String BASIC = "basic";
+	public static final String MEDICINE_INSERTED = "Medicine was inserted into the DB";
 }

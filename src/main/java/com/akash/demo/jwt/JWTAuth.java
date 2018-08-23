@@ -16,7 +16,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 public class JWTAuth {
 
-	static String key = "eaWWE21892$23";
+	private final static String key = "eaWWE21892$23";
 
 	public static String createJWT(String id, String issuer, String subject, long lifeTimeOfToken) {
 		SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
