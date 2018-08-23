@@ -3,16 +3,26 @@ package com.akash.demo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Component;
 
 import com.akash.demo.dao.impl.HospitalDAOImpl;
 import com.akash.demo.vo.MedicineVO;
 
-@Service
+@Component
 public class HospitalOpsService {
 
 	@Autowired
 	private HospitalDAOImpl hospitalDAOImpl;
+
+	@Bean(name = "urlAuthProps")
+	public static PropertiesFactoryBean mapper() {
+		PropertiesFactoryBean bean = new PropertiesFactoryBean();
+		bean.setLocation(new ClassPathResource("URLAuth.properties"));
+		return bean;
+	}
 
 	public List<MedicineVO> getAllMedicineInfo() {
 		return hospitalDAOImpl.getAllMedicineInfo();
@@ -31,7 +41,7 @@ public class HospitalOpsService {
 	}
 
 	public List<MedicineVO> getMedicineForSymptom(String symptom) {
-		return hospitalDAOImpl.getMedicineForSymptom(symptom);
+		return hospitalDAOImpl.getMedicineForsymptoms(symptom);
 	}
 
 	public boolean insertMedicineToDB(String medicineName) {

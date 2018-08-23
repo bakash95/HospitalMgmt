@@ -1,7 +1,9 @@
 package com.akash.demo.jwt;
 
+import java.util.Calendar;
 import java.util.Date;
 import javax.crypto.spec.SecretKeySpec;
+import javax.management.RuntimeErrorException;
 import javax.xml.bind.DatatypeConverter;
 
 import com.akash.demo.constants.CommonConstants;
@@ -34,16 +36,20 @@ public class JWTAuth {
 		return builder.compact();
 	}
 
-	public static JWTPayloadVO getJWTPayload(String jwt) {
-		Claims claims = Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(key)).parseClaimsJws(jwt)
-				.getBody();
-		return new JWTPayloadVO(claims.getId(), claims.getSubject(), claims.getSubject(), claims.getExpiration());
+	public static JWTPayloadVO getJWTPayload(String jwt) throws Exception {
+		Claims claims = null;
+		try {
+			claims = Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(key)).parseClaimsJws(jwt)
+					.getBody();
+		} catch (Exception e) {
+			throw new Exception("Sorry the token seems to be invalid!!");
+		}
+		return new JWTPayloadVO(claims.getId(), claims.getSubject(), claims.getIssuer(), claims.getExpiration());
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
-		String s = "=eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJha2FzaCIsImlhdCI6MTUzNDk2NDM1NSwic3ViIjoiSXNzdWVkIGZvciBBdXRoIHdpdGggZXhwaXJ5IG9mIDhocnMiLCJpc3MiOiJKV1QgQ29udHJvbGxlciIsImV4cCI6MTUzNDk5NDM1NX0.U-l95eOE3cLw4o7ybaCJ_01e_TI2y079SOLCsh6kZdw\r\n"
-				+ "".trim();
+		String s = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJha2FzaCIsImlhdCI6MTUzNTA0MDc4OCwic3ViIjoiSXNzdWVkIGZvciBBdXRoIHdpdGggZXhwaXJ5IG9mIDhocnMiLCJpc3MiOiJKV1QgQ29udHJvbGxlciIsImV4cCI6MTUzNTA3MDc4OH0.Yha6Tn_blcEnedGXK7JvKdyPuhPb4snqKXdrSaImK6s";
 		System.out.println(JWTAuth.getJWTPayload(s));
 	}
 

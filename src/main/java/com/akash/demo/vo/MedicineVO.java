@@ -7,6 +7,9 @@ public class MedicineVO {
 	String afterOrBeforeFood;
 	String timing; // change to enum
 
+	public MedicineVO() {
+	}
+
 	public MedicineVO(String medicineName, String disease, String symptomsOfDisease, String afterOrBeforeFood,
 			String timing) {
 		super();
@@ -41,7 +44,7 @@ public class MedicineVO {
 		this.symptomsOfDisease = symptomsOfDisease;
 	}
 
-	public String isAfterOrBeforeFood() {
+	public String getAfterOrBeforeFood() {
 		return afterOrBeforeFood;
 	}
 
