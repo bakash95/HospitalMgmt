@@ -29,9 +29,9 @@ public class HospitalDAOImpl {
 	}
 
 	public boolean validateUser(String userId, String password) {
-		String insq = "select * from employee where username = ? and password = ?";
+		String queryForUserPassValidation = "select * from employee where username = ? and password = ?";
 		try {
-			Employee employee = (Employee) jdbcTemplate.queryForObject(insq, new Object[] { userId, password },
+			Employee employee = (Employee) jdbcTemplate.queryForObject(queryForUserPassValidation, new Object[] { userId, password },
 					new BeanPropertyRowMapper(Employee.class));
 			if (employee == null) {
 				return false;
@@ -45,8 +45,8 @@ public class HospitalDAOImpl {
 	}
 
 	public List<MedicineVO> getAllMedicineInfo() {
-		String insq = "select * from medicine";
-		List<MedicineVO> list = jdbcTemplate.query(insq, new RowMapper<MedicineVO>() {
+		String queryForAllMedicineInfo = "select * from medicine";
+		List<MedicineVO> list = jdbcTemplate.query(queryForAllMedicineInfo, new RowMapper<MedicineVO>() {
 			@Override
 			public MedicineVO mapRow(ResultSet rs, int rownumber) throws SQLException {
 				MedicineVO e = new MedicineVO();
@@ -63,10 +63,10 @@ public class HospitalDAOImpl {
 	}
 
 	public MedicineVO getMedicineInfoForName(String medicineName) {
-		String insq = "select * from medicine where name = ?";
+		String queryForMedicineInfoForName = "select * from medicine where name = ?";
 		MedicineVO medicineVO = null;
 		try {
-			medicineVO = (MedicineVO) jdbcTemplate.queryForObject(insq, new Object[] { medicineName },
+			medicineVO = (MedicineVO) jdbcTemplate.queryForObject(queryForMedicineInfoForName, new Object[] { medicineName },
 					new RowMapper<MedicineVO>() {
 						@Override
 						public MedicineVO mapRow(ResultSet rs, int rownumber) throws SQLException {
@@ -89,8 +89,8 @@ public class HospitalDAOImpl {
 	}
 
 	public List<MedicineVO> getMedicineForDisease(String diseaseName) {
-		String insq = "select * from medicine where disease = ?";
-		List<MedicineVO> list = jdbcTemplate.query(insq, new Object[] { diseaseName }, new RowMapper<MedicineVO>() {
+		String queryForMedicineForDisease = "select * from medicine where disease = ?";
+		List<MedicineVO> list = jdbcTemplate.query(queryForMedicineForDisease, new Object[] { diseaseName }, new RowMapper<MedicineVO>() {
 			@Override
 			public MedicineVO mapRow(ResultSet rs, int rownumber) throws SQLException {
 				MedicineVO e = new MedicineVO();
@@ -106,8 +106,8 @@ public class HospitalDAOImpl {
 	}
 
 	public List<MedicineVO> getMedicineForsymptoms(String symptoms) {
-		String insq = "select * from medicine where symptoms = ?";
-		List<MedicineVO> list = jdbcTemplate.query(insq, new Object[] { symptoms }, new RowMapper<MedicineVO>() {
+		String queryForMedicineBySymptoms = "select * from medicine where symptoms = ?";
+		List<MedicineVO> list = jdbcTemplate.query(queryForMedicineBySymptoms, new Object[] { symptoms }, new RowMapper<MedicineVO>() {
 			@Override
 			public MedicineVO mapRow(ResultSet rs, int rownumber) throws SQLException {
 				MedicineVO e = new MedicineVO();
@@ -123,9 +123,9 @@ public class HospitalDAOImpl {
 	}
 
 	public boolean insertMedicineToDB(String medicineName) {
-		String insq = "insert into medicine values(?,?,?,?,?)";
+		String queryForInsertMedicine = "insert into medicine values(?,?,?,?,?)";
 		try {
-			jdbcTemplate.execute(insq, new PreparedStatementCallback<Boolean>() {
+			jdbcTemplate.execute(queryForInsertMedicine, new PreparedStatementCallback<Boolean>() {
 				@Override
 				public Boolean doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
 					ps.setString(1, medicineName);
@@ -146,9 +146,9 @@ public class HospitalDAOImpl {
 		if (checkUserExists(userName)) {
 			return false;
 		}
-		String insq = "insert into employee values(?,?,?)";
+		String queryForInsert = "insert into employee values(?,?,?)";
 		try {
-			jdbcTemplate.execute(insq, new PreparedStatementCallback<Boolean>() {
+			jdbcTemplate.execute(queryForInsert, new PreparedStatementCallback<Boolean>() {
 				@Override
 				public Boolean doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
 					ps.setString(1, userName);
@@ -164,9 +164,9 @@ public class HospitalDAOImpl {
 	}
 
 	private boolean checkUserExists(String userName) {
-		String insq = "select * from employee where username = ?";
+		String queryForUserExistsCheck = "select * from employee where username = ?";
 		try {
-			jdbcTemplate.queryForObject(insq, new Object[] { userName }, new RowMapper<Employee>() {
+			jdbcTemplate.queryForObject(queryForUserExistsCheck, new Object[] { userName }, new RowMapper<Employee>() {
 				@Override
 				public Employee mapRow(ResultSet rs, int rownumber) throws SQLException {
 					Employee e = new Employee();
@@ -183,9 +183,9 @@ public class HospitalDAOImpl {
 	}
 
 	public boolean checkRole(String username, String string) {
-		String sql = "select * from employee where username= ? and role=?";
+		String queryForRoleCheck = "select * from employee where username= ? and role=?";
 		try {
-			jdbcTemplate.queryForObject(sql, new Object[] { username, string }, new RowMapper<Employee>() {
+			jdbcTemplate.queryForObject(queryForRoleCheck, new Object[] { username, string }, new RowMapper<Employee>() {
 				@Override
 				public Employee mapRow(ResultSet rs, int rownumber) throws SQLException {
 					Employee e = new Employee();
@@ -202,9 +202,9 @@ public class HospitalDAOImpl {
 	}
 
 	public boolean removeMedicineFromDB(String medicineName) {
-		String sql = "delete from medicine where name = ?";
+		String queryForDeleteMedicine = "delete from medicine where name = ?";
 		try {
-			jdbcTemplate.execute(sql, new PreparedStatementCallback<Boolean>() {
+			jdbcTemplate.execute(queryForDeleteMedicine, new PreparedStatementCallback<Boolean>() {
 				@Override
 				public Boolean doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
 					ps.setString(1, medicineName);
