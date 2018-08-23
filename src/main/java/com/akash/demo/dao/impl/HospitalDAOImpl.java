@@ -1,9 +1,20 @@
 package com.akash.demo.dao.impl;
 
+import java.security.InvalidKeyException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Base64;
 import java.util.List;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -23,16 +34,25 @@ public class HospitalDAOImpl {
 
 	private final JdbcTemplate jdbcTemplate;
 
+	private final static String SECRET_KEY = "A331@262g2191n$c";
+
 	@Autowired
 	public HospitalDAOImpl(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
 	public boolean validateUser(String userId, String password) {
+		String encrypted = null;
+		try {
+			encrypted = HospitalDAOImpl.encryptPass(password);
+		} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchProviderException | NoSuchPaddingException
+				| IllegalBlockSizeException | BadPaddingException e2) {
+			e2.printStackTrace();
+		}
 		String queryForUserPassValidation = "select * from employee where username = ? and password = ?";
 		try {
-			Employee employee = (Employee) jdbcTemplate.queryForObject(queryForUserPassValidation, new Object[] { userId, password },
-					new BeanPropertyRowMapper(Employee.class));
+			Employee employee = (Employee) jdbcTemplate.queryForObject(queryForUserPassValidation,
+					new Object[] { userId, encrypted }, new BeanPropertyRowMapper(Employee.class));
 			if (employee == null) {
 				return false;
 			}
@@ -66,8 +86,8 @@ public class HospitalDAOImpl {
 		String queryForMedicineInfoForName = "select * from medicine where name = ?";
 		MedicineVO medicineVO = null;
 		try {
-			medicineVO = (MedicineVO) jdbcTemplate.queryForObject(queryForMedicineInfoForName, new Object[] { medicineName },
-					new RowMapper<MedicineVO>() {
+			medicineVO = (MedicineVO) jdbcTemplate.queryForObject(queryForMedicineInfoForName,
+					new Object[] { medicineName }, new RowMapper<MedicineVO>() {
 						@Override
 						public MedicineVO mapRow(ResultSet rs, int rownumber) throws SQLException {
 							MedicineVO e = new MedicineVO();
@@ -90,35 +110,37 @@ public class HospitalDAOImpl {
 
 	public List<MedicineVO> getMedicineForDisease(String diseaseName) {
 		String queryForMedicineForDisease = "select * from medicine where disease = ?";
-		List<MedicineVO> list = jdbcTemplate.query(queryForMedicineForDisease, new Object[] { diseaseName }, new RowMapper<MedicineVO>() {
-			@Override
-			public MedicineVO mapRow(ResultSet rs, int rownumber) throws SQLException {
-				MedicineVO e = new MedicineVO();
-				e.setMedicineName(rs.getString(1));
-				e.setDisease(rs.getString(2));
-				e.setSymptomsOfDisease(rs.getString(3));
-				e.setAfterOrBeforeFood(rs.getString(4));
-				e.setTiming(rs.getString(5));
-				return e;
-			}
-		});
+		List<MedicineVO> list = jdbcTemplate.query(queryForMedicineForDisease, new Object[] { diseaseName },
+				new RowMapper<MedicineVO>() {
+					@Override
+					public MedicineVO mapRow(ResultSet rs, int rownumber) throws SQLException {
+						MedicineVO e = new MedicineVO();
+						e.setMedicineName(rs.getString(1));
+						e.setDisease(rs.getString(2));
+						e.setSymptomsOfDisease(rs.getString(3));
+						e.setAfterOrBeforeFood(rs.getString(4));
+						e.setTiming(rs.getString(5));
+						return e;
+					}
+				});
 		return list;
 	}
 
 	public List<MedicineVO> getMedicineForsymptoms(String symptoms) {
 		String queryForMedicineBySymptoms = "select * from medicine where symptoms = ?";
-		List<MedicineVO> list = jdbcTemplate.query(queryForMedicineBySymptoms, new Object[] { symptoms }, new RowMapper<MedicineVO>() {
-			@Override
-			public MedicineVO mapRow(ResultSet rs, int rownumber) throws SQLException {
-				MedicineVO e = new MedicineVO();
-				e.setMedicineName(rs.getString(1));
-				e.setDisease(rs.getString(2));
-				e.setSymptomsOfDisease(rs.getString(3));
-				e.setAfterOrBeforeFood(rs.getString(4));
-				e.setTiming(rs.getString(5));
-				return e;
-			}
-		});
+		List<MedicineVO> list = jdbcTemplate.query(queryForMedicineBySymptoms, new Object[] { symptoms },
+				new RowMapper<MedicineVO>() {
+					@Override
+					public MedicineVO mapRow(ResultSet rs, int rownumber) throws SQLException {
+						MedicineVO e = new MedicineVO();
+						e.setMedicineName(rs.getString(1));
+						e.setDisease(rs.getString(2));
+						e.setSymptomsOfDisease(rs.getString(3));
+						e.setAfterOrBeforeFood(rs.getString(4));
+						e.setTiming(rs.getString(5));
+						return e;
+					}
+				});
 		return list;
 	}
 
@@ -152,7 +174,18 @@ public class HospitalDAOImpl {
 				@Override
 				public Boolean doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
 					ps.setString(1, userName);
-					ps.setString(2, password);
+					String encrypted = null;
+					try {
+						encrypted = HospitalDAOImpl.encryptPass(password);
+					} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchProviderException
+							| NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException e1) {
+						e1.printStackTrace();
+					}
+					if (encrypted != null) {
+						ps.setString(2, encrypted);
+					} else {
+						ps.setString(2, password);
+					}
 					ps.setString(3, rOLE_USER);
 					return ps.execute();
 				}
@@ -171,7 +204,18 @@ public class HospitalDAOImpl {
 				public Employee mapRow(ResultSet rs, int rownumber) throws SQLException {
 					Employee e = new Employee();
 					e.setUsername(rs.getString(1));
-					e.setPassword(rs.getString(2));
+					String decrypted = null;
+					try {
+						decrypted = HospitalDAOImpl.decryptPass(rs.getString(2));
+					} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchProviderException
+							| NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException e1) {
+						e1.printStackTrace();
+					}
+					if (decrypted != null) {
+						e.setPassword(rs.getString(2));
+					} else {
+						e.setPassword(rs.getString(2));
+					}
 					e.setRole(rs.getString(3));
 					return e;
 				}
@@ -185,16 +229,17 @@ public class HospitalDAOImpl {
 	public boolean checkRole(String username, String string) {
 		String queryForRoleCheck = "select * from employee where username= ? and role=?";
 		try {
-			jdbcTemplate.queryForObject(queryForRoleCheck, new Object[] { username, string }, new RowMapper<Employee>() {
-				@Override
-				public Employee mapRow(ResultSet rs, int rownumber) throws SQLException {
-					Employee e = new Employee();
-					e.setUsername(rs.getString(1));
-					e.setPassword(rs.getString(2));
-					e.setRole(rs.getString(3));
-					return e;
-				}
-			});
+			jdbcTemplate.queryForObject(queryForRoleCheck, new Object[] { username, string },
+					new RowMapper<Employee>() {
+						@Override
+						public Employee mapRow(ResultSet rs, int rownumber) throws SQLException {
+							Employee e = new Employee();
+							e.setUsername(rs.getString(1));
+							e.setPassword(rs.getString(2));
+							e.setRole(rs.getString(3));
+							return e;
+						}
+					});
 		} catch (EmptyResultDataAccessException e) {
 			return false;
 		}
@@ -231,6 +276,24 @@ public class HospitalDAOImpl {
 			return false;
 		}
 		return true;
+	}
+
+	private static String encryptPass(String password) throws NoSuchAlgorithmException, NoSuchProviderException,
+			NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+		Cipher cipher = Cipher.getInstance("AES");
+		Key key = new SecretKeySpec(SECRET_KEY.getBytes(), "AES");
+		cipher.init(Cipher.ENCRYPT_MODE, key);
+		byte[] encrypted = cipher.doFinal(password.getBytes());
+		return new String(Base64.getEncoder().encode(encrypted));
+	}
+
+	private static String decryptPass(String encPass) throws NoSuchAlgorithmException, NoSuchProviderException,
+			NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+		Cipher cipher = Cipher.getInstance("AES");
+		Key key = new SecretKeySpec(SECRET_KEY.getBytes(), "AES");
+		cipher.init(Cipher.DECRYPT_MODE, key);
+		byte[] decrypted = cipher.doFinal(Base64.getDecoder().decode(encPass.getBytes()));
+		return new String(decrypted);
 	}
 
 }

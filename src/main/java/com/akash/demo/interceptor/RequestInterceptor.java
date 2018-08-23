@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -17,6 +19,8 @@ import com.akash.demo.vo.JWTPayloadVO;
 
 public class RequestInterceptor extends HandlerInterceptorAdapter {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(RequestInterceptor.class);
+
 	@Resource(name = "urlAuthProps")
 	private Map<String, String> urlAuthProps;
 
@@ -26,6 +30,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		LOGGER.info("Interceptor executed");
 		String url = request.getRequestURI().replaceAll("/", "");
 		String mapEntry = urlAuthProps.get(url);
 		if (url == null || mapEntry == null) {
@@ -68,9 +73,9 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 				return false;
 			}
 			if (auth != null && !auth.isEmpty()) {
-				System.out.println("Auth header is present allowing request");
+				LOGGER.info("Auth header is present allowing request");
 				if (auth.toLowerCase().contains(CommonConstants.BASIC)) {
-					System.out.println("basic is present");
+					LOGGER.info("basic is present");
 					String tokens[] = auth.split(" ");
 					byte[] decodedToken = Base64.getDecoder().decode(tokens[1]);
 					String userNamePass = new String(decodedToken);
@@ -79,7 +84,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 						response.setStatus(401);
 						return false;
 					}
-					System.out.println("user name is " + splitUserName[0]);
+					LOGGER.info("user name is " + splitUserName[0]);
 					if (!hospitalOpsService.validateUser(splitUserName[0], splitUserName[1])) {
 						response.sendError(401, "Sorry you are not a valid user");
 						return false;

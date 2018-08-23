@@ -24,6 +24,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<jwt.version>0.7.0</jwt.version>
+		<log4j2.version>2.5</log4j2.version>
+		<mysql.version>6.0.6</mysql.version>
 	</properties>
 
 	<dependencies>
@@ -56,12 +58,37 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>6.0.6</version>
+			<version>${mysql.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-jcl</artifactId>
 		</dependency>
 	</dependencies>
 
