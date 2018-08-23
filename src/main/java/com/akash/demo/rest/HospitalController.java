@@ -65,7 +65,7 @@ public class HospitalController {
 			System.out.println(authToken.trim());
 			httpServletResponse.addHeader(CommonConstants.AUTHROIZATION,
 					CommonConstants.BEARER + "=" + authToken.trim());
-			return ResponseEntity.status(HttpStatus.OK).body(CommonConstants.JWT_AUTH_GEN_SUCCESS);
+			return ResponseEntity.status(HttpStatus.OK).body(authToken + " " + CommonConstants.JWT_AUTH_GEN_SUCCESS);
 		}
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(CommonConstants.JWT_AUTH_GEN_FAILURE);
 	}
@@ -82,7 +82,7 @@ public class HospitalController {
 	@RequestMapping(value = "/updateMedicine", method = RequestMethod.POST)
 	private ResponseEntity<String> updateMedicine(@RequestBody MedicineVO medicineVO) {
 		if (hospitalOpsService.updateMedicine(medicineVO)) {
-			return ResponseEntity.status(HttpStatus.OK).body("Medicine was inserted into the DB");
+			return ResponseEntity.status(HttpStatus.OK).body("Medicine was updated into the DB");
 		}
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
 				.body("You are tring to update a medicine which is not present!");

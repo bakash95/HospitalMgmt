@@ -32,34 +32,39 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 			return false;
 		}
 		if (mapEntry.equals(CommonConstants.ADMIN)) {
+			if (!hospitalOpsService.checkRole(request.getParameter(CommonConstants.USERNAME), CommonConstants.ADMIN)) {
+				response.sendError(401, "Sorry you are not a admin!!!");
+				return false;
+			}
 			String auth = request.getHeader(CommonConstants.AUTHROIZATION);
 			if (auth == null || auth.isEmpty() || !auth.contains(CommonConstants.BEARER)) {
-				response.setStatus(401);
+				response.sendError(401, "Sorry you there is no bearer token or the word bearer is missing");
 				return false;
 			}
 			String splittedForBearer[] = auth.split(" ");
 			if (splittedForBearer.length != 2 || splittedForBearer[1].isEmpty()) {
+				response.sendError(401, "Sorry you there is no bearer token!!");
 				return false;
 			}
 			try {
 				JWTPayloadVO jwtPayloadVO = JWTAuth.getJWTPayload(splittedForBearer[1]);
 				if (!JWTAuth.validateJWT(jwtPayloadVO, request.getParameter(CommonConstants.USERNAME))) {
-					response.setStatus(403);
+					response.sendError(403, "Invalid Access Token please Regenerate");
 				}
 			} catch (Exception e) {
-				response.setStatus(403);
+				response.sendError(403, "Invalid Access Token please Regenerate");
 				return false;
 			}
 		} else if (mapEntry.equals(CommonConstants.DOCTOR)) {
 			String auth = request.getHeader(CommonConstants.AUTHROIZATION);
 			if (auth == null || auth.isEmpty() || auth.contains(CommonConstants.BEARER)) {
-				response.setStatus(401);
+				response.sendError(401, "Sorry you there is no basic token or the word basic is missing");
 				return false;
 			}
 			String splitted[] = auth.split(" ");
 			if (splitted[0].isEmpty() || !splitted[0].toLowerCase().equals(CommonConstants.BASIC)
 					|| !(splitted.length == 2)) {
-				response.setStatus(401);
+				response.sendError(401, "Sorry you there is no basic token!");
 				return false;
 			}
 			if (auth != null && !auth.isEmpty()) {
@@ -75,12 +80,12 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 						return false;
 					}
 					System.out.println("user name is " + splitUserName[0]);
-					if (!hospitalOpsService.checkRole(splitUserName[0], CommonConstants.DOCTOR)) {
-						response.setStatus(401);
+					if (!hospitalOpsService.validateUser(splitUserName[0], splitUserName[1])) {
+						response.sendError(401, "Sorry you are not a valid user");
 						return false;
 					}
-					if (!hospitalOpsService.validateUser(splitUserName[0], splitUserName[1])) {
-						response.setStatus(401);
+					if (!hospitalOpsService.checkRole(splitUserName[0], CommonConstants.DOCTOR)) {
+						response.sendError(401, "Sorry you dont have sufficient privileages");
 						return false;
 					}
 				}
