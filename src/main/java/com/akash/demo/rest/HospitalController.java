@@ -30,7 +30,7 @@ public class HospitalController {
 		if (hospitalOpsService.register(userName, password, role)) {
 			return ResponseEntity.status(HttpStatus.OK).body("User registered successfully!");
 		}
-		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("System Unavailable");
+		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("Sorry user is already present");
 	}
 
 	@RequestMapping(value = "/getAllMedicineInfo", produces = "application/json", method = RequestMethod.GET)

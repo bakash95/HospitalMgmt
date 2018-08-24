@@ -63,11 +63,9 @@ public class HospitalDAOImpl {
 			}
 		} catch (EmptyResultDataAccessException e) {
 			LOGGER.debug("Employee not valid..");
-			LOGGER.error(e.getMessage(), e);
 			return false;
 		} catch (IncorrectResultSizeDataAccessException e1) {
 			LOGGER.debug("Employee not valid..");
-			LOGGER.error(e1.getMessage(), e1);
 			return false;
 		}
 		LOGGER.debug("Employee is valid..proceeding with other process");
@@ -112,11 +110,9 @@ public class HospitalDAOImpl {
 					});
 		} catch (EmptyResultDataAccessException e) {
 			LOGGER.debug("Medicine is not present in DB");
-			LOGGER.error(e.getMessage(), e);
 			return medicineVO;
 		} catch (IncorrectResultSizeDataAccessException e1) {
 			LOGGER.debug("Medicine is not present in DB");
-			LOGGER.error(e1.getMessage(), e1);
 			return medicineVO;
 		}
 		LOGGER.debug("Medicine found {}", medicineVO);
@@ -177,7 +173,6 @@ public class HospitalDAOImpl {
 			});
 		} catch (Exception e) {
 			LOGGER.debug("Medicine was not inserted into DB");
-			LOGGER.error(e.getMessage(), e);
 			return false;
 		}
 		LOGGER.debug("Medicines was inserted into DB");
@@ -211,7 +206,6 @@ public class HospitalDAOImpl {
 				}
 			});
 		} catch (Exception e) {
-			LOGGER.error(e.getMessage(), e);
 			return false;
 		}
 		return true;
@@ -242,7 +236,6 @@ public class HospitalDAOImpl {
 				}
 			});
 		} catch (EmptyResultDataAccessException e) {
-			LOGGER.error(e.getMessage(), e);
 			return false;
 		}
 		return true;
@@ -263,7 +256,6 @@ public class HospitalDAOImpl {
 						}
 					});
 		} catch (EmptyResultDataAccessException e) {
-			LOGGER.error(e.getMessage(), e);
 			return false;
 		}
 		return true;
@@ -280,7 +272,6 @@ public class HospitalDAOImpl {
 				}
 			});
 		} catch (Exception e) {
-			LOGGER.error(e.getMessage(), e);
 			return false;
 		}
 		return true;
@@ -296,7 +287,6 @@ public class HospitalDAOImpl {
 				return false;
 			}
 		} catch (Exception e) {
-			LOGGER.error(e.getMessage(), e);
 			return false;
 		}
 		return true;
