@@ -16,6 +16,8 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -32,6 +34,8 @@ import com.akash.demo.vo.MedicineVO;
 @Repository
 public class HospitalDAOImpl {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(HospitalDAOImpl.class);
+
 	private final JdbcTemplate jdbcTemplate;
 
 	private final static String SECRET_KEY = "A331@262g2191n$c";
@@ -47,20 +51,26 @@ public class HospitalDAOImpl {
 			encrypted = HospitalDAOImpl.encryptPass(password);
 		} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchProviderException | NoSuchPaddingException
 				| IllegalBlockSizeException | BadPaddingException e2) {
-			e2.printStackTrace();
+			LOGGER.error(e2.getMessage(), e2);
 		}
 		String queryForUserPassValidation = "select * from employee where username = ? and password = ?";
 		try {
 			Employee employee = (Employee) jdbcTemplate.queryForObject(queryForUserPassValidation,
 					new Object[] { userId, encrypted }, new BeanPropertyRowMapper(Employee.class));
 			if (employee == null) {
+				LOGGER.debug("Employee not valid..");
 				return false;
 			}
 		} catch (EmptyResultDataAccessException e) {
+			LOGGER.debug("Employee not valid..");
+			LOGGER.error(e.getMessage(), e);
 			return false;
 		} catch (IncorrectResultSizeDataAccessException e1) {
+			LOGGER.debug("Employee not valid..");
+			LOGGER.error(e1.getMessage(), e1);
 			return false;
 		}
+		LOGGER.debug("Employee is valid..proceeding with other process");
 		return true;
 	}
 
@@ -78,6 +88,7 @@ public class HospitalDAOImpl {
 				return e;
 			}
 		});
+		LOGGER.debug("List Of all Medicines {}", list);
 		return list;
 
 	}
@@ -100,11 +111,15 @@ public class HospitalDAOImpl {
 						}
 					});
 		} catch (EmptyResultDataAccessException e) {
+			LOGGER.debug("Medicine is not present in DB");
+			LOGGER.error(e.getMessage(), e);
 			return medicineVO;
 		} catch (IncorrectResultSizeDataAccessException e1) {
+			LOGGER.debug("Medicine is not present in DB");
+			LOGGER.error(e1.getMessage(), e1);
 			return medicineVO;
 		}
-
+		LOGGER.debug("Medicine found {}", medicineVO);
 		return medicineVO;
 	}
 
@@ -123,6 +138,7 @@ public class HospitalDAOImpl {
 						return e;
 					}
 				});
+		LOGGER.debug("Medicines found based on Disease{}", list);
 		return list;
 	}
 
@@ -141,6 +157,7 @@ public class HospitalDAOImpl {
 						return e;
 					}
 				});
+		LOGGER.debug("Medicines found based on symptoms{}", list);
 		return list;
 	}
 
@@ -159,8 +176,11 @@ public class HospitalDAOImpl {
 				}
 			});
 		} catch (Exception e) {
+			LOGGER.debug("Medicine was not inserted into DB");
+			LOGGER.error(e.getMessage(), e);
 			return false;
 		}
+		LOGGER.debug("Medicines was inserted into DB");
 		return true;
 	}
 
@@ -179,7 +199,7 @@ public class HospitalDAOImpl {
 						encrypted = HospitalDAOImpl.encryptPass(password);
 					} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchProviderException
 							| NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException e1) {
-						e1.printStackTrace();
+						LOGGER.error(e1.getMessage(), e1);
 					}
 					if (encrypted != null) {
 						ps.setString(2, encrypted);
@@ -191,6 +211,7 @@ public class HospitalDAOImpl {
 				}
 			});
 		} catch (Exception e) {
+			LOGGER.error(e.getMessage(), e);
 			return false;
 		}
 		return true;
@@ -209,7 +230,7 @@ public class HospitalDAOImpl {
 						decrypted = HospitalDAOImpl.decryptPass(rs.getString(2));
 					} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchProviderException
 							| NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException e1) {
-						e1.printStackTrace();
+						LOGGER.error(e1.getMessage(), e1);
 					}
 					if (decrypted != null) {
 						e.setPassword(rs.getString(2));
@@ -221,6 +242,7 @@ public class HospitalDAOImpl {
 				}
 			});
 		} catch (EmptyResultDataAccessException e) {
+			LOGGER.error(e.getMessage(), e);
 			return false;
 		}
 		return true;
@@ -241,6 +263,7 @@ public class HospitalDAOImpl {
 						}
 					});
 		} catch (EmptyResultDataAccessException e) {
+			LOGGER.error(e.getMessage(), e);
 			return false;
 		}
 		return true;
@@ -257,6 +280,7 @@ public class HospitalDAOImpl {
 				}
 			});
 		} catch (Exception e) {
+			LOGGER.error(e.getMessage(), e);
 			return false;
 		}
 		return true;
@@ -272,7 +296,7 @@ public class HospitalDAOImpl {
 				return false;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e.getMessage(), e);
 			return false;
 		}
 		return true;

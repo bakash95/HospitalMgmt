@@ -60,4 +60,10 @@ public class MedicineVO {
 		this.timing = timing;
 	}
 
+	@Override
+	public String toString() {
+		return this.medicineName + " " + this.disease + " " + this.symptomsOfDisease + " " + this.afterOrBeforeFood
+				+ " " + this.timing;
+	}
+
 }
