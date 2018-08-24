@@ -93,7 +93,7 @@ public class HospitalController {
 			return ResponseEntity.status(HttpStatus.OK).body("Medicine was Removed into the DB");
 		}
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-				.body("Trying to remove a medicine which is already there?");
+				.body("Trying to remove a medicine which is not there?");
 	}
 
 }
