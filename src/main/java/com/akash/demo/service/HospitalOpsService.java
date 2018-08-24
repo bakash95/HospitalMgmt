@@ -2,6 +2,8 @@ package com.akash.demo.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +16,8 @@ import com.akash.demo.vo.MedicineVO;
 
 @Component
 public class HospitalOpsService {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(HospitalOpsService.class);
 
 	@Autowired
 	private HospitalDAOImpl hospitalDAOImpl;
@@ -58,6 +62,7 @@ public class HospitalOpsService {
 		} else if (role.toLowerCase().equals("staff")) {
 			ROLE_USER = CommonConstants.STAFF;
 		}
+		LOGGER.info("Role that was assigned to the user is {}", ROLE_USER);
 		return hospitalDAOImpl.register(userName, password, ROLE_USER);
 	}
 
