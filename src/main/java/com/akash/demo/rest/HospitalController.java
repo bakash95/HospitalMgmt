@@ -84,7 +84,7 @@ public class HospitalController {
 			return ResponseEntity.status(HttpStatus.OK).body("Medicine was updated into the DB");
 		}
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-				.body("You are tring to update a medicine which is not present!");
+				.body("You are not authorized to update as the medicine is not present in the database");
 	}
 
 	@RequestMapping(value = "/removeMedicine", method = RequestMethod.GET)

@@ -316,15 +316,20 @@
 					<con:params />
 					<con:element>data</con:element>
 				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>403</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
 				<con:request name="Request 1"
 					id="23d92660-9d28-4b0b-b4be-d78cd5dcc4fa"
 					mediaType="application/json">
 					<con:settings>
 						<con:setting
 							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Authorization" value="Bearer
-							eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhZG1pbiIsImlhdCI6MTUzNTA1MDA0OSwic3ViIjoiSXNzdWVkIGZvciBBdXRoIHdpdGggZXhwaXJ5IG9mIDhocnMiLCJpc3MiOiJKV1QgQ29udHJvbGxlciIsImV4cCI6MTUzNTA4MDA0OX0.2z_sRAqzZ10ST1mOGKRaoGiPr_RFWZqHruPHEjF0cgo"
-							xmlns="http://eviware.com/soapui/config"/>
-						</con:setting>
+							eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhZG1pbiIsImlhdCI6MTUzNTA4MzYxMiwic3ViIjoiSXNzdWVkIGZvciBBdXRoIHdpdGggZXhwaXJ5IG9mIDhocnMiLCJpc3MiOiJKV1QgQ29udHJvbGxlciIsImV4cCI6MTUzNTExMzYxMn0.Yosnr030iB0UB89D_cP9Q0QjPXZ9cY0_-QITe8Swiso"
+							xmlns="http://eviware.com/soapui/config"/></con:setting>
 					</con:settings>
 					<con:endpoint>http://localhost:8080</con:endpoint>
 					<con:request />
@@ -345,8 +350,7 @@
 						<con:setting
 							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Authorization" value="Bearer
 							eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJha2FzaCIsImlhdCI6MTUzNTA0MDc4OCwic3ViIjoiSXNzdWVkIGZvciBBdXRoIHdpdGggZXhwaXJ5IG9mIDhocnMiLCJpc3MiOiJKV1QgQ29udHJvbGxlciIsImV4cCI6MTUzNTA3MDc4OH0.Yha6Tn_blcEnedGXK7JvKdyPuhPb4snqKXdrSaImK6s"
-							xmlns="http://eviware.com/soapui/config"/>
-						</con:setting>
+							xmlns="http://eviware.com/soapui/config"/></con:setting>
 					</con:settings>
 					<con:endpoint>http://localhost:8080</con:endpoint>
 					<con:request />
@@ -363,7 +367,7 @@
 			</con:method>
 		</con:resource>
 		<con:resource name="register"
-			path="/register/?username=doctor&amp;password=password&amp;role=doctor"
+			path="/register/?username=staff&amp;password=staff&amp;role=staff"
 			id="2db92f01-98ec-414d-b4a7-e289e18488a9">
 			<con:settings />
 			<con:parameters />
@@ -530,6 +534,12 @@
 					<con:params />
 					<con:element>data</con:element>
 				</con:representation>
+				<con:representation type="RESPONSE">
+					<con:mediaType xsi:nil="true" />
+					<con:status>200</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
 				<con:request name="Request 1"
 					id="884b8bff-8cdf-4afa-9143-b317143c9e70"
 					mediaType="application/json">
@@ -654,15 +664,13 @@
 						<con:setting
 							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
 							&lt;con:entry key="" value=""/>
-							&lt;con:entry key="Authorization"
-							value="Basic ZG9jdG9yOnBhc3N3b3Jk"/>
-							&lt;/xml-fragment>
-						</con:setting>
+							&lt;con:entry key="Authorization" value="Basic ZG9jdG9yOnBhc3N3b3Jk"/>
+							&lt;/xml-fragment></con:setting>
 					</con:settings>
 					<con:endpoint>http://localhost:8080</con:endpoint>
 					<con:request>{
-						"medicineName":"paracetamol",
-						"disease":"fever",
+						"medicineName":"pare",
+						"disease":"tiredness",
 						"symptomsOfDisease":"pain",
 						"afterOrBeforeFood":"after",
 						"timing":"morn"
@@ -679,7 +687,7 @@
 			</con:method>
 		</con:resource>
 		<con:resource name="removeMedicine"
-			path="/removeMedicine/?medicinename=paracetamol"
+			path="/removeMedicine/?medicinename=paracetamol&amp;username=admin"
 			id="624a4f4a-bbb1-4730-b9f1-b315d41fdf5b">
 			<con:settings />
 			<con:parameters />
@@ -693,12 +701,38 @@
 					<con:params />
 					<con:element>data</con:element>
 				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
+				<con:representation type="FAULT">
+					<con:mediaType xsi:nil="true" />
+					<con:status>401</con:status>
+					<con:params />
+					<con:element>data</con:element>
+				</con:representation>
 				<con:request name="Request 1"
 					id="0543d5e2-275d-4915-bda8-739b93523cf7"
 					mediaType="application/json">
 					<con:settings>
 						<con:setting
-							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Authorization" value="Bearer
+							eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhZG1pbiIsImlhdCI6MTUzNTA4NDA0OCwic3ViIjoiSXNzdWVkIGZvciBBdXRoIHdpdGggZXhwaXJ5IG9mIDhocnMiLCJpc3MiOiJKV1QgQ29udHJvbGxlciIsImV4cCI6MTUzNTExNDA0OH0._-hehNaG7hKOJKlM9G0s60EADGgju23kfzxmhaxhFRk"
+							xmlns="http://eviware.com/soapui/config"/></con:setting>
 					</con:settings>
 					<con:endpoint>http://localhost:8080</con:endpoint>
 					<con:request />
@@ -713,7 +747,7 @@
 			</con:method>
 		</con:resource>
 		<con:resource name="getInfoForMedicineForDisease"
-			path="/getInfoForMedicineForDisease/?disease=fever"
+			path="/getInfoForMedicineForDisease/?disease=tiredness"
 			id="87cf3ce8-6ce3-4bb9-979e-d92b88cf77b8">
 			<con:settings />
 			<con:parameters />
