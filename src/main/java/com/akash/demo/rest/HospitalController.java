@@ -90,7 +90,7 @@ public class HospitalController {
 	@RequestMapping(value = "/removeMedicine", method = RequestMethod.GET)
 	private ResponseEntity<String> removeMedicine(@RequestParam("medicinename") String medicineName) {
 		if (hospitalOpsService.removeMedicineFromDB(medicineName)) {
-			return ResponseEntity.status(HttpStatus.OK).body("Medicine was Removed into the DB");
+			return ResponseEntity.status(HttpStatus.OK).body("Medicine was Removed from the DB");
 		}
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
 				.body("Trying to remove a medicine which is not there?");
